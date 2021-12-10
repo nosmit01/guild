@@ -1,6 +1,8 @@
 import React from 'react'
-import Chat from './Chat'
+import Chat from './Modules/Chat/Index'
+import Login from './Modules/Login/Index'
 import styled from 'styled-components'
+import { Routes, Route, Link } from "react-router-dom";
 
 const Wrapper = styled.section`
   background: #ffefd5;
@@ -8,7 +10,10 @@ const Wrapper = styled.section`
 function App() {
   return (
     <Wrapper>
-      <Chat></Chat>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="chat" element={<Chat />} />
+      </Routes>
     </Wrapper>
   );
 }

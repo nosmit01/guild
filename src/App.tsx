@@ -4,8 +4,7 @@ import styled from 'styled-components'
 
 const Wrapper = styled.section`
   background: #ffefd5;
-`;
-
+`
 function App() {
   return (
     <Wrapper>

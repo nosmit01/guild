@@ -2,7 +2,7 @@ import React from 'react'
 import Chat from './Modules/Chat/Index'
 import Login from './Modules/Login/Index'
 import styled from 'styled-components'
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 const Wrapper = styled.section`
   background: #ffefd5;

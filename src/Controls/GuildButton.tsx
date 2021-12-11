@@ -1,26 +1,28 @@
-import React from 'react'
 import styled from 'styled-components'
 
 type ComponentProps = {
   className?: string,
   children: any,
   disabled: boolean,
-  onClick: Function
+  onClick: Function,
+  test?: string
 }
 
-type BubbleProps = {
+type ButtonProps = {
   onClick: any
 }
 
-const Button = styled.button<BubbleProps>`
+const Button = styled.button<ButtonProps>`
   cursor: pointer;
 `
-function GuildButton({ className, children, disabled, onClick }: ComponentProps) {
+function GuildButton({ className, children, disabled, onClick, test }: ComponentProps) {
   return (
     <Button
       className={className}
       onClick={onClick}
+      data-testId={test}
       disabled={disabled}
+      type="button"
     >
       {children}
     </Button>

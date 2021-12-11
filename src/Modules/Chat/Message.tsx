@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components'
 
 type BubbleProps = {
@@ -10,7 +9,8 @@ type ComponentProps = {
   bgColor: string,
   children: any,
   date: string,
-  isYou: boolean
+  isYou: boolean,
+  test: string
 }
 
 const Bubble = styled.div<BubbleProps>`
@@ -30,14 +30,15 @@ const Info = styled.div`
   text-align: right;
   font-size: 12px;
 `
-function Message({ bgColor, children, date, isYou }: ComponentProps) {
+function Message({ bgColor, children, date, isYou, test }: ComponentProps) {
   return (
     <Bubble
       background={bgColor}
       isYou={isYou}
+      data-testid={test}
     >
-      <div>{children}</div>
-      <Info>
+      <div data-testid="content">{children}</div>
+      <Info data-testid="date">
         <span>{date}</span>
       </Info>
     </Bubble>

@@ -1,15 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter as Router} from 'react-router-dom';
+import styled from 'styled-components'
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+const Wrapper = styled.section`
+  background: #ffefd5;
+`
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
+    <Wrapper>
       <App />
-    </Router>
+    </Wrapper>
   </React.StrictMode>,
   document.getElementById('root')
 );

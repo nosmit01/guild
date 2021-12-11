@@ -5,13 +5,15 @@ import GuildInput from '../../Controls/GuildInput'
 import GuildButton from '../../Controls/GuildButton'
 
 type ActionsButtonProps = {
-  disabled: boolean
+  disabled: boolean,
+  test: string
 }
 
 type ActionsInputProps = {
   onChange: any,
   placeholder: string,
-  value: string
+  test: string
+  value: string,
 }
 
 const Wrapper = styled.section`
@@ -57,16 +59,19 @@ function Login() {
   return (
     <Wrapper>
       <Header>Welcome to Guild Chat</Header>
-      <small>No affiliation with Guild Education... just a coincidence ;)</small>
+      <small>No affiliation with Guild Education ;)</small>
       <Actions>
         <ActionsInput
+          name="loginInput"
           onChange={handleSetUsername}
           placeholder="Enter your username"
+          test="loginInput"
           value={input}
         ></ActionsInput>
         <ActionsButton
           onClick={handleJoinChat}
           disabled={!input}
+          test="loginBtn"
         >
           Join chat
         </ActionsButton>

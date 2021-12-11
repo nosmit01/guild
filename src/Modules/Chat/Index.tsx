@@ -25,7 +25,8 @@ type MessageProps = {
   content?: string,
   dateFormatted?: string,
   isYou?: boolean,
-  username?: string
+  username?: string,
+  test?: string
 }
 
 const Wrapper = styled.section`
@@ -120,6 +121,7 @@ function Chat() {
             bgColor={msg.bgColor || ''}
             date={msg.dateFormatted || ''}
             isYou={msg.isYou || false}
+            test="message"
           >
               {msg.content}
           </Message>
@@ -128,12 +130,15 @@ function Chat() {
       <Actions>
         <ActionsInput
           disabled={sending}
+          name="chatInput"
           onChange={handleSetInput}
+          test="chatInput"
           value={input}
         ></ActionsInput>
         <ActionsButton
           disabled={!input || sending}
           onClick={handleSendMessage}
+          test="chatSendBtn"
         >
           { sending ? 'Sending...' : 'Send' }
         </ActionsButton>

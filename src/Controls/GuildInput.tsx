@@ -1,22 +1,22 @@
-import React from 'react'
-import styled from 'styled-components'
-
 type ComponentProps = {
   className?: string,
   disabled?: boolean,
+  name: string,
   onChange: any,
   placeholder?: string,
+  test?: string,
   value: string
 }
 
-const Input = styled.input`
-
-`
-function GuildInput({ className, disabled, onChange, placeholder, value }: ComponentProps) {
+function GuildInput({
+  className, disabled, name, onChange, placeholder, test, value
+}: ComponentProps) {
   return (
-    <Input
+    <input
       className={className}
+      data-testid={test}
       disabled={disabled}
+      name={name}
       onChange={onChange}
       placeholder={placeholder}
       type="text"

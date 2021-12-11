@@ -18,14 +18,6 @@ type AddMessageProps = {
   }
 }
 
-type FormatMessageProps = {
-  data: {
-    username: string
-  },
-  id: string,
-  username: string,
-}
-
 const addMessage = async({ message }: AddMessageProps) => {
   return new Promise<MessageProps>(async (resolve, reject) => {
     const payload = {

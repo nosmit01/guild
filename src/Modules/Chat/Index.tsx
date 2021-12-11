@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import { collection, orderBy, onSnapshot, query } from 'firebase/firestore';
+import { db } from '../../firebase.config'
 import type { ReactElement } from 'react'
 import { useLocation } from 'react-router-dom'
 import styled from 'styled-components'
@@ -12,6 +14,7 @@ type ActionsButtonProps = {
 }
 
 type ActionsInputProps = {
+  disabled: boolean,
   onChange: any,
   value: string
 }
@@ -62,10 +65,29 @@ function Chat() {
   const username = location.state?.username ?? ''
   const [input, setInput] = useState('')
   const [messages, setMessages] = useState<Array<MessageProps>>([])
+  const [sending, setSending] = useState(false)
 
   useEffect(() => {
-    handleFetchAllMessages()
-  }, [messages.length]);
+    /* Todo: move to service to separate concerns */
+    const q = query(collection(db, 'chat'), orderBy('date'));
+    const unsubscribe = onSnapshot(q, (querySnapshot: any) => {
+      const allMessages: MessageProps[] = []
+      querySnapshot.forEach((doc: any) => { // querySnapshot doesn't support map
+        const docData = doc.data()
+        allMessages.push({
+            ...docData,
+            id: doc.id,
+            bgColor: docData.username === username ? '#1338be' : '#ed9121',
+            isYou: docData.username === username
+          });
+      });
+      setMessages(allMessages)
+    })
+
+    return () => {
+      unsubscribe();
+   }
+  }, [username])
 
   const handleSetInput = (e: any): void => {
     e && setInput(e.target.value)
@@ -73,6 +95,7 @@ function Chat() {
 
   const handleSendMessage = async(): Promise<any> => {
     try {
+      setSending(true)
       await MessageService.addMessage({
         message: {
           content: input,
@@ -80,18 +103,10 @@ function Chat() {
         },
       })
       setInput('')
-      handleFetchAllMessages()
+      setSending(false)
     } catch(e) {
       console.log(`Chat | Add Message Error: ${e}`)
-    }
-  }
-
-  const handleFetchAllMessages = async(): Promise<any> => {
-    try {
-      const allMessages = await MessageService.getMessages({ loggedInUser: username })
-      setMessages(allMessages)
-    } catch(e) {
-      console.log(`Chat | Fetch All Messages Error: ${e}`)
+      setSending(false)
     }
   }
 
@@ -112,14 +127,15 @@ function Chat() {
       </Messages>
       <Actions>
         <ActionsInput
+          disabled={sending}
           onChange={handleSetInput}
           value={input}
         ></ActionsInput>
         <ActionsButton
+          disabled={!input || sending}
           onClick={handleSendMessage}
-          disabled={!input}
         >
-          Send
+          { sending ? 'Sending...' : 'Send' }
         </ActionsButton>
       </Actions>
     </Wrapper>

@@ -1,3 +1,4 @@
+import React, { memo } from 'react';
 import styled from 'styled-components'
 
 type BubbleProps = {
@@ -45,4 +46,4 @@ function Message({ bgColor, children, date, isYou, test }: ComponentProps) {
   )
 }
 
-export default Message
+export default memo(Message)

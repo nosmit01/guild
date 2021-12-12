@@ -16,7 +16,7 @@
 ## Start the app
 1. ### $ `yarn start`
 2. Navigate to http://localhost:3000/
-**Note: It may try to open a browser for you with a page not found. Ignore that browser, that is for automated testing. Instead, open a new browser window and paste in the address. **
+**Note: Cypress may try to open a browser for you with a page not found/ or Cypress home screen. Ignore that browser, that is for automated testing. Instead, open a new browser window and paste in the address. **
 
 ## Testing
 1. Make sure that you are still running the site in a terminal

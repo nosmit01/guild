@@ -24,3 +24,7 @@
 3. ### $ `yarn run cypress open`
 4. In a few seconds, the cypress app will start and you will see a list of tests
 5. Before you click on the tests, choose Electron 94 from the browser list in the top right. There is a known issue with Chrome attempting to load localhost url.
+
+
+## Demo tip
+A good way to see it in action would be to run the app and the cypress tests at the same time. You will be able to see the messages posted from your localhost user and from the cypress test user in realtime.

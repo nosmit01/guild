@@ -1,46 +1,26 @@
-# Getting Started with Create React App
+# Guild chat
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+`$` denotes a terminal command
 
-## Available Scripts
+**Tech stack**
+- [React 17+](https://reactjs.org/)
+- [Typescript](https://www.typescriptlang.org/)
+- [React Router](https://reactrouter.com/)
+- [Styled components](https://styled-components.com/)
+- [Firebase](https://firebase.google.com/)
+- [Cypress testing](https://www.cypress.io/)
 
-In the project directory, you can run:
+## Install dependencies
+### $ `yarn`
 
-### `yarn start`
+## Start the app
+1. ### $ `yarn start`
+2. Navigate to http://localhost:3000/
+**Note: It may try to open a browser for you with a page not found. Ignore that browser, that is for automated testing. Instead, open a new browser window and paste in the address. **
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Testing
+1. Make sure that you are still running the site in a terminal
+2. Open a new terminal
+3. $ `yarn run cypress open`
+4. In a few seconds, the cypress app will start and you will see a list of tests
+5. Before you click on the tests, choose Electron 94 from the browser list in the top right. There is a known issue with Chrome attempting to load localhost url.

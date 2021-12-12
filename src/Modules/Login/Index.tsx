@@ -59,7 +59,6 @@ function Login() {
   return (
     <Wrapper>
       <Header>Welcome to Guild Chat</Header>
-      <small>No affiliation with Guild Education ;)</small>
       <Actions>
         <ActionsInput
           name="loginInput"
